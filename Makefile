@@ -1,13 +1,15 @@
 
 BUILD_ID ?= ${USER}
 
+.DEFAULT: build
 
 .PHONY: builder
 builder:
 	docker build -t apk_builder:${BUILD_ID} builder/
 
 target:
-	mkdir -p target
+	mkdir -p target/{,testing/,community/,main/}
+
 aports:
 	git clone git://dev.alpinelinux.org/aports
 
